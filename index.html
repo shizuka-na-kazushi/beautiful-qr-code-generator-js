@@ -1,0 +1,341 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+  <div>
+    <!---
+      これ以降をカスタムHTMLブロックにいれる
+    -->
+    <style>
+      #qr-generating-text {
+        width: 100%;
+      }
+
+      .qr-code-gen-center {
+        display: flex;
+        justify-content: center;
+      }
+
+      .qr-code-gen-margin {
+        margin: 20px;
+      }
+
+      .qr-code-styling-copyright {
+        font-size: 10px;
+        margin-top: 18px;
+      }
+
+      .inline-radio {
+        display: flex;
+        border-radius: 3px;
+        overflow: hidden;
+        border: 1px solid #b6b6b6;
+      }
+
+      .inline-radio div {
+        position: relative;
+        flex: 1;
+      }
+
+      .inline-radio input {
+        width: 40px;
+        height: 30px;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      #qr-generator-options {
+        background: #fff;
+        display: flex;
+      }
+
+      #qr-generator-options input:checked+label {
+        background: #CCC8AA;
+        font-weight: 500;
+      }
+
+      #qr-generator-options label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #111;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        border-right: 1px solid #b6b6b6;
+      }
+
+      #qr-generator-options div:last-child label {
+        border-right: 0;
+      }
+    </style>
+
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+    <script type="text/javascript">
+      const qrCodeColors = [
+        // 1
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord-t1.png",
+          color1: "#6a11cb", color2: "#2575fc"
+        },
+        // 2
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord-t2.png",
+          color1: "#09203f", color2: "#537895"
+        },
+        // 3
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord-t3.png",
+          color1: "#f83600", color2: "#f9d423"
+        },
+        // 4
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord-t4.png",
+          color1: "#b224ef", color2: "#7579ff"
+        },
+        // 5
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord-t5.png",
+          color1: "#50cc7f", color2: "#f5d100"
+        },
+        // 6
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord-t6.png",
+          color1: "#13547a", color2: "#80d0c7"
+        },
+        // 7
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord.png",
+          color1: "black", color2: "#434343"
+        },
+        // 8
+        {
+          image: "https://tech-landlord.com/wp-content/uploads/2024/01/QR-tech-landlord.png",
+          color1: "black", color2: "black"
+        },
+
+      ];
+
+      const qrCodeStylingOptions = {
+        "width": 300,
+        "height": 300,
+        "data": "https://tech-landlord.com",
+        "margin": 0,
+        "qrOptions": {
+          "typeNumber": "0",
+          "mode": "Byte",
+          "errorCorrectionLevel": "H"
+        },
+        "imageOptions": {
+          "hideBackgroundDots": true,
+          "imageSize": 0.2,
+          "margin": 0,
+          "crossOrigin": "anonymous",
+        },
+        "dotsOptions": {
+          "type": "dots",
+          "color": "#6a1a4c",
+          "gradient": {
+            "type": "linear",
+            "rotation": 0,
+            "colorStops": [
+              {
+                "offset": 0,
+                "color": "#48db59"
+              },
+              {
+                "offset": 1,
+                "color": "#007027"
+              }
+            ]
+          }
+        },
+        "backgroundOptions": {
+          "color": "#ffffff",
+          "gradient": null
+        },
+        // "image": "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/200px-Instagram_logo_2022.svg.png",
+        "dotsOptionsHelper": {
+          "colorType": {
+            "single": true,
+            "gradient": false
+          },
+          "gradient": {
+            "linear": true,
+            "radial": false,
+            "color1": "#6a1a4c",
+            "color2": "#6a1a4c",
+            "rotation": "0"
+          }
+        },
+        "cornersSquareOptions": {
+          "type": "extra-rounded",
+          "color": "#e37d7d",
+          "gradient": {
+            "type": "linear",
+            "rotation": 0,
+            "colorStops": [
+              {
+                "offset": 0,
+                "color": "#02e337"
+              },
+              {
+                "offset": 1,
+                "color": "#007027"
+              }
+            ]
+          }
+        },
+        "cornersSquareOptionsHelper": {
+          "colorType": {
+            "single": true,
+            "gradient": false
+          },
+          "gradient": {
+            "linear": true,
+            "radial": false,
+            "color1": "#000000",
+            "color2": "#000000",
+            "rotation": "0"
+          }
+        },
+        "cornersDotOptions": {
+          "type": "dot",
+          "color": "#652f6f",
+          "gradient": {
+            "type": "linear",
+            "rotation": 0,
+            "colorStops": [
+              {
+                "offset": 0,
+                "color": "#3cfb8f"
+              },
+              {
+                "offset": 1,
+                "color": "#007027"
+              }
+            ]
+          }
+        },
+        "cornersDotOptionsHelper": {
+          "colorType": {
+            "single": true,
+            "gradient": false
+          },
+          "gradient": {
+            "linear": true,
+            "radial": false,
+            "color1": "#000000",
+            "color2": "#000000",
+            "rotation": "0"
+          }
+        },
+        "backgroundOptionsHelper": {
+          "colorType": {
+            "single": true,
+            "gradient": false
+          },
+          "gradient": {
+            "linear": true,
+            "radial": false,
+            "color1": "#ffffff",
+            "color2": "#ffffff",
+            "rotation": "0"
+          }
+        }
+      }
+
+      let qrCode = null;
+
+      function onUpdateQrGeneratingText() {
+        console.log(document.getElementById("qr-generating-text").value);
+        if (qrCode) {
+          qrCodeStylingOptions.data = document.getElementById("qr-generating-text").value;
+          qrCode.update(qrCodeStylingOptions);
+        }
+      }
+
+      function updateOptions(type) {
+        const c = qrCodeColors[type];
+        qrCodeStylingOptions.dotsOptions.gradient.colorStops[0].color = c.color1;
+        qrCodeStylingOptions.dotsOptions.gradient.colorStops[1].color = c.color2;
+        qrCodeStylingOptions.cornersSquareOptions.gradient.colorStops[0].color = c.color1;
+        qrCodeStylingOptions.cornersSquareOptions.gradient.colorStops[1].color = c.color2;
+        qrCodeStylingOptions.cornersDotOptions.gradient.colorStops[0].color = c.color1;
+        qrCodeStylingOptions.cornersDotOptions.gradient.colorStops[1].color = c.color2;
+        qrCodeStylingOptions.image = c.image;
+      }
+
+      function onUpdateOptions(type) {
+        updateOptions(type);
+        qrCode.update(qrCodeStylingOptions);
+      }
+
+    </script>
+
+    <form>
+      <input type="text" id="qr-generating-text" value="https://tech-landlord.com"
+        oninput="onUpdateQrGeneratingText()" />
+    </form>
+
+    <form id="qr-generator-options" class="qr-code-gen-center qr-code-gen-margin">
+      <group class="inline-radio">
+        <div><input type="radio" name="option" id="option1" value="1"><label for="option1">1</label></div>
+        <div><input type="radio" name="option" id="option2" value="2"><label for="option2">2</label></div>
+        <div><input type="radio" name="option" id="option3" value="3" checked><label for="option3">3</label></div>
+        <div><input type="radio" name="option" id="option4" value="4"><label for="option3">4</label></div>
+        <div><input type="radio" name="option" id="option5" value="5"><label for="option3">5</label></div>
+        <div><input type="radio" name="option" id="option6" value="6"><label for="option3">6</label></div>
+        <div><input type="radio" name="option" id="option7" value="7"><label for="option3">7</label></div>
+        <div><input type="radio" name="option" id="option8" value="8"><label for="option3">8</label></div>
+      </group>
+    </form>
+
+    <div id="qr-code-generated" class="qr-code-gen-center"></div>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', () => {
+        var radioButtons = document.querySelectorAll('input[name="option"]');
+        var outputText = document.getElementById('outputText');
+
+        let checkedIndex = -1;
+        radioButtons.forEach(function (radioButton, index) {
+          radioButton.addEventListener('change', function () {
+            onUpdateOptions(parseInt(this.value) - 1);
+          });
+          if (radioButton.checked) {
+            checkedIndex = index;
+          }
+        });
+
+        updateOptions(checkedIndex);
+        qrCode = new QRCodeStyling(qrCodeStylingOptions);
+        qrCode.append(document.getElementById("qr-code-generated"));
+      });
+    </script>
+
+    <div class="qr-code-gen-center qr-code-gen-margin">
+      <input type="submit" value="ダウンロード" onclick="qrCode.download()" />
+    </div>
+
+    <div class="qr-code-styling-copyright qr-code-gen-center">
+      このページは<a href="https://github.com/kozakdenys/qr-code-styling">
+        qr-code-styling Library
+      </a>(Copyright (c) 2019 Denys Kozak) を使って実現しています。
+    </div>
+    <!---
+    ここまで
+    -->
+  </div>
+
+</body>
+
+</html>
