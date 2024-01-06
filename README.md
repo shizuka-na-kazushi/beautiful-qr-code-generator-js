@@ -3,7 +3,7 @@
 
 This is source code **beautiful QR code generator** served at "[おしゃれ！美しい QRコード作成ツール](https://tech-landlord.com/beautiful-qr-code-generator/)" on [tech-landlord.com](https://tech-landlord.com).
 
-It's pure JavaScript (Vanilla.js) and able to deploy any WP site.
+It's inline pure JavaScript (Vanilla.js) in HTML and able to deploy any WP site.
 
 Only dependency is [qr-code-styling](https://github.com/kozakdenys/qr-code-styling) JS library on CDN.
 
@@ -20,7 +20,7 @@ Start Live Server from the status bar on bottom of VS code screen, and then open
 
 # Deploy
 
-You can this code in your WordPress just to copy & paste.
+You can use this code in your WordPress site just to copy & paste.
 
 ## 1. Open index.html
 
